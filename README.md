@@ -1,6 +1,8 @@
 # CS:GO Coordinator
 A node-steam plugin to coordinate with Counter-Strike: Global Offensive.
 
+[![NPM](https://nodei.co/npm/csgocoordinator.png?downloads=true&stars=true)](https://nodei.co/npm/csgocoordinator)
+
 # Requirements
 * node-steam
 * You must own Counter-Strike: Global Offensive on the account you sign in with.
