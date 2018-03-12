@@ -108,44 +108,44 @@ Emitted when the Game Coordinator status change.
 
 ```json
 {
-	request_id: null,
-	account_profiles: [
+	"request_id": null,
+	"account_profiles": [
 		{
-			account_id: 40723173,
-			ongoingmatch: null,
-			global_stats: null,
-			penalty_seconds: null,
-			penalty_reason: null,
-			vac_banned: null,
-			ranking: {
-				account_id: 40723173,
-				rank_id: 17,
-				wins: 601,
-				rank_change: null
+			"account_id": 40723173,
+			"ongoingmatch": null,
+			"global_stats": null,
+			"penalty_seconds": null,
+			"penalty_reason": null,
+			"vac_banned": null,
+			"ranking": {
+				"account_id": 40723173,
+				"rank_id": 17,
+				"wins": 601,
+				"rank_change": null
 			},
-			commendation: {
-				cmd_friendly: 120,
-				cmd_teaching: 116,
-				cmd_leader: 116
+			"commendation": {
+				"cmd_friendly": 120,
+				"cmd_teaching": 116,
+				"cmd_leader": 116
 			},
-			medals: {
-				medal_team: 2,
-				medal_combat: 2,
-				medal_weapon: 3,
-				medal_global: 1,
-				medal_arms: 2,
-				display_items_defidx: [947, 960, 1329, 903, 895, 1318, 1030, 874, 1001],
-				featured_display_item_defidx: 947
+			"medals": {
+				"medal_team": 2,
+				"medal_combat": 2,
+				"medal_weapon": 3,
+				"medal_global": 1,
+				"medal_arms": 2,
+				"display_items_defidx": [947, 960, 1329, 903, 895, 1318, 1030, 874, 1001],
+				"featured_display_item_defidx": 947
 			},
-			my_current_event: null,
-			my_current_event_teams: [],
-			my_current_team: null,
-			my_current_event_stages: [],
-			survey_vote: null,
-			activity: null,
-			player_level: 14,
-			player_cur_xp: 327682222,
-			player_xp_bonus_flags: null
+			"my_current_event": null,
+			"my_current_event_teams": [],
+			"my_current_team": null,
+			"my_current_event_stages": [],
+			"survey_vote": null,
+			"activity": null,
+			"player_level": 14,
+			"player_cur_xp": 327682222,
+			"player_xp_bonus_flags": null
 		}
 	]
 }
@@ -158,16 +158,16 @@ Emitted when Steam Game Coordinator responds to the `csgo.player.requestProfile(
 
 ```json
 {
-	confirmation_id: Long {
+	"confirmation_id": Long {
 		low: -2147483593,
 		high: 760387526,
 		unsigned: true
 	},
-	account_id: 40723173,
-	server_ip: null,
-	response_type: 9119,
-	response_result: 1,
-	tokens: null
+	"account_id": 40723173,
+	"server_ip": null,
+	"response_type": 9119,
+	"response_result": 1,
+	"tokens": null
 }
 ```
 
@@ -177,7 +177,14 @@ Emitted when Steam Game Coordinator responds to the `csgo.player.report()` metho
 * `response` - Object
 
 ```json
-
+{
+	"confirmation_id": null,
+	"account_id": 40723173,
+	"server_ip": null,
+	"response_type": 9121,
+	"response_result": 1,
+	"tokens": 2
+}
 ```
 
 Emitted when Steam Game Coordinator responds to the `csgo.player.commend()` method.
