@@ -159,9 +159,9 @@ Emitted when Steam Game Coordinator responds to the `csgo.player.requestProfile(
 ```json
 {
 	"confirmation_id": Long {
-		low: -2147483593,
-		high: 760387526,
-		unsigned: true
+		"low": -2147483593,
+		"high": 760387526,
+		"unsigned": true
 	},
 	"account_id": 40723173,
 	"server_ip": null,
