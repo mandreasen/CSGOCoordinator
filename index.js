@@ -5,8 +5,9 @@ const Level = require('./lib/level.js');
 const Player = require('./lib/player.js');
 const Handler = require('./lib/handler.js');
 const Protos = require('./lib/protos.js');
+const Sharecode = require('./lib/sharecode.js');
 const Events = require('events');
-const bignumber = require('bignumber.js');
+const Bignumber = require('bignumber.js');
 
 module.exports = class CSGOCoordinator extends Events {
 	/**
@@ -36,6 +37,9 @@ module.exports = class CSGOCoordinator extends Events {
 
 		// Player information and commands.
 		this.player = new Player(this);
+
+		// Share code.
+		this.sharecode = new Sharecode();
 
 		// CSGO Game Coordinator message handler.
 		this._GC.on('message', (header, buffer, callback) => {
@@ -127,10 +131,10 @@ module.exports = class CSGOCoordinator extends Events {
 	}
 
 	SteamID2AccountID(steamId) {
-		return parseInt(new bignumber(steamId).minus('76561197960265728'));
+		return parseInt(new Bignumber(steamId).minus('76561197960265728'));
 	}
 
 	AccountID2SteamID(accountId) {
-		return new bignumber(accountId).plus('76561197960265728').toString();
+		return new Bignumber(accountId).plus('76561197960265728').toString();
 	}
 }

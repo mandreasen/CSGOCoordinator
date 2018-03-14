@@ -57,6 +57,27 @@ Convert 64 bit SteamID into AccountID.
 
 Convert an AccountID into SteamID 64 bit.
 
+### csgo.sharecode.decode(sharecode);
+* `sharecode` - CS:GO Shere code.
+
+Convert an CS:GO share code to match id, reservation id and tv port.
+
+```json
+{
+	matchId: {
+		low: 401,
+		high: 760344937,
+		unsigned: true
+	},
+	reservationId: {
+		low: 47,
+		high: 760346056,
+		unsigned: true
+	},
+	tvPort: 35917
+}
+```
+
 ### csgo.rank.getName(rankId)
 * `rankId` - CS:GO in-game rank ID.
 
@@ -158,7 +179,7 @@ Emitted when Steam Game Coordinator responds to the `csgo.player.requestProfile(
 
 ```json
 {
-	"confirmation_id": Long {
+	"confirmation_id": {
 		"low": -2147483593,
 		"high": 760387526,
 		"unsigned": true
