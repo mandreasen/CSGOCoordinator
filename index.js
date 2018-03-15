@@ -4,8 +4,9 @@ const Rank = require('./lib/rank.js');
 const Level = require('./lib/level.js');
 const Player = require('./lib/player.js');
 const Handler = require('./lib/handler.js');
-const Protos = require('./lib/protos.js');
 const Sharecode = require('./lib/sharecode.js');
+const Match = require('./lib/match.js');
+const Protos = require('./lib/protos.js');
 const Events = require('events');
 const Bignumber = require('bignumber.js');
 
@@ -40,6 +41,9 @@ module.exports = class CSGOCoordinator extends Events {
 
 		// Share code.
 		this.sharecode = new Sharecode();
+
+		// Match.
+		this.match = new Match(this);
 
 		// CSGO Game Coordinator message handler.
 		this._GC.on('message', (header, buffer, callback) => {

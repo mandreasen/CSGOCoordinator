@@ -60,21 +60,13 @@ Convert an AccountID into SteamID 64 bit.
 ### csgo.sharecode.decode(sharecode);
 * `sharecode` - CS:GO Shere code.
 
-Convert an CS:GO share code to match id, reservation id and tv port.
+Convert an CS:GO share code to match id, outcome id and token.
 
 ```json
 {
-	matchId: {
-		low: 401,
-		high: 760344937,
-		unsigned: true
-	},
-	reservationId: {
-		low: 47,
-		high: 760346056,
-		unsigned: true
-	},
-	tvPort: 35917
+	"matchId": "3265656638094180753",
+	"outcomeId": "3265661444162584623",
+	"token": 35917
 }
 ```
 
@@ -117,6 +109,21 @@ Report player for aim hacking, wall hacking, other hacking, griefing, abusive te
 Commend a player for being friendly, a good teacher or/and a good leader.
 
 *You can commend with one account once per 12 hours.*
+
+### csgo.match.requestGameInfo(matchId, outcomeId, token)
+* `matchId` - CS:GO match id in string format
+* `outcomeId` - CS:GO outcome id in string format
+* `token` - CS:GO token in integer format
+
+Requests match info. Listen for the `matchList` event for response.
+
+### csgo.match.requestRecentGames()
+
+Request match info of your recent played games. Listen for the `matchList` event for response.
+
+### csgo.match.requestMatchmakingStats()
+
+Request matchmaking stats. Listen for the `matchmakingStats` event for response.
 
 # Events
 ### ready
@@ -209,3 +216,166 @@ Emitted when Steam Game Coordinator responds to the `csgo.player.report()` metho
 ```
 
 Emitted when Steam Game Coordinator responds to the `csgo.player.commend()` method.
+
+### matchList
+* `response` - Object
+
+```json
+{
+	"msgrequestid": 9147,
+	"accountid": 40723173,
+	"servertime": 1521135928,
+	"matches": [ {
+		"matchid": {
+			"low": 401,
+			"high": 760344937,
+			"unsigned": true
+		},
+		"matchtime": 1520689874,
+		"watchablematchinfo": {
+			"server_ip": 184,
+			"tv_port": 2064223309,
+			"tv_spectators": 0,
+			"tv_time": null,
+			"tv_watch_password": null,
+			"cl_decryptdata_key": null,
+			"cl_decryptdata_key_pub": {
+				"low": 518511473,
+				"high": 1231283309,
+				"unsigned": true
+			},
+			"game_type": null,
+			"game_mapgroup": null,
+			"game_map": null,
+			"server_id": null,
+			"match_id": null,
+			"reservation_id": null
+		},
+		"roundstats_legacy": null,
+		"roundstatsall": [ {
+			"reservationid": {
+				"low": 47,
+				"high": 760346056,
+				"unsigned": true
+			},
+			"reservation": {
+				"account_ids": [ 240915902, 68946780, 2901614, 40723173, 321392295, 205260762, 235780062, 211062627, 264801312, 114932004 ],
+				"game_type": 1048584,
+				"match_id": null,
+				"server_version": null,
+				"rankings": [],
+				"encryption_key": null,
+				"encryption_key_pub": null,
+				"party_ids": [],
+				"whitelist": [],
+				"tv_master_steamid": null,
+				"tournament_event": null,
+				"tournament_teams": [],
+				"tournament_casters_account_ids": [],
+				"tv_relay_steamid": null,
+				"pre_match_data": null
+			},
+			"map": "http://replay184.valve.net/730/003265661444162584623_2064223309.dem.bz2",
+			"round": null,
+			"kills": [ 22, 24, 22, 22, 6, 17, 9, 11, 10, 10 ],
+			"assists": [ 7, 2, 2, 1, 6, 2, 3, 2, 2, 0 ],
+			"deaths": [ 12, 9, 11, 11, 15, 20, 19, 20, 19, 19 ],
+			"scores": [ 58, 57, 52, 51, 19, 50, 27, 25, 24, 22 ],
+			"pings": [],
+			"round_result": null,
+			"match_result": 1,
+			"team_scores": [ 16, 6 ],
+			"confirm": null,
+			"reservation_stage": null,
+			"match_duration": 2058,
+			"enemy_kills": [ 22, 24, 22, 22, 6, 17, 10, 11, 10, 10 ],
+			"enemy_headshots": [ 14, 12, 10, 6, 3, 7, 4, 4, 6, 5 ],
+			"enemy_3ks": [],
+			"enemy_4ks": [],
+			"enemy_5ks": [],
+			"mvps": [ 4, 4, 4, 4, 0, 5, 1, 0, 0, 0 ],
+			"spectators_count": null,
+			"spectators_count_tv": null,
+			"spectators_count_lnk": null,
+			"enemy_kills_agg": [],
+			"drop_info": null
+		} ]
+	} ],
+	"streams": [],
+	"tournamentinfo": null
+}
+```
+
+Emitted when Steam Game Coordinator responds to the `csgo.match.requestGameInfo()` and `csgo.match.requestRecentGames()` method.
+
+### matchmakingStats
+* `response` - Object
+
+```json
+{
+	"account_id": 40723173,
+	"ongoingmatch": null,
+	"global_stats": {
+		"players_online": 315775,
+		"servers_online": 232087,
+		"players_searching": 10109,
+		"servers_available": 174327,
+		"ongoing_matches": 16565,
+		"search_time_avg": 128651,
+		"search_statistics": [ { 
+				"game_type": 520,
+				"search_time_avg": 153376,
+				"players_searching": 4064
+			}, {
+				"game_type": 32776,
+				"search_time_avg": 163287,
+				"players_searching": 4937
+			}, {
+				"game_type": 2097160,
+				"search_time_avg": 425897,
+				"players_searching": null
+			} // Etc.
+		],
+		"main_post_url": '',
+		"required_appid_version": 13629,
+		"pricesheet_version": 1520974256,
+		"twitch_streams_version": 2,
+		"active_tournament_eventid": 13,
+		"active_survey_id": 0
+	},
+	"penalty_seconds": null,
+	"penalty_reason": null,
+	"vac_banned": 0,
+	"ranking": {
+		"account_id": 40723173,
+		"rank_id": 6,
+		"wins": 56,
+		"rank_change": null
+	},
+	"commendation": {
+		"cmd_friendly": 5,
+		"cmd_teaching": 4,
+		"cmd_leader": 4
+	},
+	"medals": {
+		"medal_team": 0,
+		"medal_combat": 0,
+		"medal_weapon": 0,
+		"medal_global": 0,
+		"medal_arms": 0,
+		"display_items_defidx": [],
+		"featured_display_item_defidx": null
+	},
+	"my_current_event": null,
+	"my_current_event_teams": [],
+	"my_current_team": null,
+	"my_current_event_stages": [],
+	"survey_vote": null,
+	"activity": null,
+	"player_level": 17,
+	"player_cur_xp": 327680044,
+	"player_xp_bonus_flags": null
+}
+```
+
+Emitted when Steam Game Coordinator responds to the `csgo.match.requestMatchmakingStats()` method.
