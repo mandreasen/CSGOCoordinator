@@ -1,6 +1,6 @@
 {
 	"name": "csgocoordinator",
-	"version": "1.1.2",
+	"version": "1.2.0",
 	"description": "A node-steam plugin to coordinate with Counter-Strike: Global Offensive.",
 	"main": "index.js",
 	"keywords": [

@@ -66,7 +66,6 @@ module.exports = class CSGOCoordinator extends Events {
 	 */
 	set _GCStatus(ready) {
 		this._GCReady = ready;
-		this.emit('ready', ready);
 
 		if (this._debug) {
 			if (ready) {
@@ -75,6 +74,9 @@ module.exports = class CSGOCoordinator extends Events {
 				this.emit('debug', "CSGO Game Coordinator is inactive.");
 			}
 		}
+
+		// Emit ready status.
+		this.emit('ready', ready);
 	}
 
 	/**

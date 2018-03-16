@@ -115,15 +115,23 @@ Commend a player for being friendly, a good teacher or/and a good leader.
 * `outcomeId` - CS:GO outcome id in string format
 * `token` - CS:GO token in integer format
 
-Requests match info. Listen for the `matchList` event for response.
+Requests match info. Listen for the `gameInfo` event for response.
 
 ### csgo.match.requestRecentGames()
 
-Request match info of your recent played games. Listen for the `matchList` event for response.
+Request match info of your recent played games. Listen for the `recentGames` event for response.
 
 ### csgo.match.requestMatchmakingStats()
 
 Request matchmaking stats. Listen for the `matchmakingStats` event for response.
+
+### csgo.match.requestLiveGameForUser(accountId)
+
+Request live game info for user. Listen for the `liveGameForUser` event for response.
+
+### csgo.match.requestCurrentLiveGames()
+
+Request current live games. Listen for the `currentLiveGames` event for response.
 
 # Events
 ### ready
@@ -217,7 +225,7 @@ Emitted when Steam Game Coordinator responds to the `csgo.player.report()` metho
 
 Emitted when Steam Game Coordinator responds to the `csgo.player.commend()` method.
 
-### matchList
+### gameInfo, recentGames, liveGameForUser and currentLiveGames
 * `response` - Object
 
 ```json
@@ -334,9 +342,9 @@ Emitted when Steam Game Coordinator responds to the `csgo.match.requestGameInfo(
 				"game_type": 2097160,
 				"search_time_avg": 425897,
 				"players_searching": null
-			} // Etc.
+			}
 		],
-		"main_post_url": '',
+		"main_post_url": "",
 		"required_appid_version": 13629,
 		"pricesheet_version": 1520974256,
 		"twitch_streams_version": 2,
