@@ -58,7 +58,7 @@ Convert 64 bit SteamID into AccountID.
 Convert an AccountID into SteamID 64 bit.
 
 ### csgo.sharecode.decode(sharecode);
-* `sharecode` - CS:GO Shere code.
+* `sharecode` - CS:GO Share code.
 
 Convert an CS:GO share code to match id, outcome id and token.
 
